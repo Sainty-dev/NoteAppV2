@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="NoteAppV2.App">
+  <Application.Resources>
+
+    <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Thickness x:Key="PageMargin">15</Thickness>
+
+            <!-- Global Colors -->
+            <Color x:Key="AppBackgroundColor">#FFFFFFF0</Color>
+            <Color x:Key="NavigationBarColor">#c6cbcf</Color>
+            <Color x:Key="NavigationBarTextColor">#FFFFFFF0</Color>
+            <Color x:Key="NoteBackgroundColor">#f6f7f5</Color>
+
+            <!--styles -->
+
+            <Style TargetType="{x:Type NavigationPage}">
+                <Setter Property="BarBackgroundColor"
+                    Value="{StaticResource NavigationBarColor}" />
+
+                <Setter Property="BarTextColor"
+                    Value="{StaticResource NavigationBarTextColor}" />
+
+            </Style>
+
+            <Style TargetType="{x:Type ContentPage}"
+               ApplyToDerivedTypes="True">
+
+                <Setter Property="BackgroundColor"
+                    Value="{StaticResource AppBackgroundColor}" />
+
+            </Style>
+            <!--Label color.(black)-->
+            <Style x:Key="BaseLabel" TargetType="Label">
+                <Setter Property="TextColor" 
+                        Value="Black" />
+            </Style>
+            <!--Font size for a lable -->
+            <Style x:Key="LabelLarge" TargetType="Label" BasedOn="{StaticResource BaseLabel}">
+                <Setter Property="FontSize" Value="Large"/>
+            </Style>
+            <!--List view styles -->
+            <Style x:Key="NoteListView" TargetType="ListView">
+                <Setter Property="HasUnevenRows" Value="True"/>
+                <Setter Property="SeparatorVisibility" Value="None"/>
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+            <!--List view frame styles -->
+            <Style x:Key="NoteItem" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="HasShadow" Value="{OnPlatform Android=true, iOS=false, Default=true}" />
+            </Style>
+        </ResourceDictionary>
+
+    </Application.Resources>
+</prism:PrismApplication>

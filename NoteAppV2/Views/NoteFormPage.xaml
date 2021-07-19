@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NoteAppV2.Views.NoteFormPage">
+
+    <StackLayout>
+        <Grid BackgroundColor="{StaticResource NoteBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="0">
+
+                <Label FontSize="Medium"  Text="Enjoy Note"/>
+
+            </StackLayout>
+            <Grid RowSpacing="20" Grid.Row="1" Margin="20,0,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="app_icon.png" HeightRequest="90" WidthRequest="50" VerticalOptions="EndAndExpand"/>
+                <Entry  Text="{Binding Titles}" Grid.Row="1" Placeholder="Note Title" PlaceholderColor="#bababa" FontSize="16"/>
+                <Entry  Text="{Binding Content}" Grid.Row="2" Placeholder="Content" PlaceholderColor="#bababa" FontSize="16" />
+                <Button Command="{Binding SaveCommand}"  Text="Save" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="3"/>
+                <Button Command="{Binding CancelCommand}" Text="Cancel" BackgroundColor="LightGray" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="4"/>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label BackgroundColor="#bababa" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    <Label BackgroundColor="#bababa" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                </Grid>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6">
+                    <Image Source="pgg.png"  HeightRequest="300" WidthRequest="98" VerticalOptions="EndAndExpand"/>
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="2" BackgroundColor="#ffffff">
+                <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+                <Label Text="Thank you for using Note" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

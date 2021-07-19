@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:behave="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="NoteAppV2.Views.NoteListPage"
+             Title="Notes">
+
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem IconImageSource="note_add_icon"
+                     Command="{Binding AddClickedCommand}"
+                     Priority="0"
+                     Order="Primary"
+                     />
+
+    </ContentPage.ToolbarItems>
+    <ListView ItemsSource="{Binding Path=NoteItems}" Style="{StaticResource NoteListView}">
+        <ListView.Behaviors>
+            <behave:EventToCommandBehavior Command="{Binding ItemSelectedCommand}" 
+                                    EventName="ItemTapped" 
+                                EventArgsParameterPath="Item" />
+        </ListView.Behaviors>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem
+                            IsDestructive="True" 
+                            Text="Delete" />
+                    </ViewCell.ContextActions>
+                    <Grid Padding="10">
+                        <Frame Style="{StaticResource NoteItem}">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="image1.jpg" WidthRequest="66" />
+                                <StackLayout VerticalOptions="Center">
+                                    <Label
+                                        Style="{StaticResource LabelLarge}"
+                                        Text="{Binding Titles}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                         TextColor="#c6cbcf"
+                                        Text="{Binding Date}"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>
